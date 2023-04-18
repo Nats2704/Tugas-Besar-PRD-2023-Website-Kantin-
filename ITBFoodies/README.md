@@ -4,6 +4,8 @@ Commands:
     py -m venv venv
     venv\Scripts\activate
     pip install -r requirements.txt
+    pip install Pillow
+    pip install django
     py manage.py runserver
 
 # Admin login
