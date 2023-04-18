@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}ITB Foodies - Aplikasi Pemesanan Kantin ITB{% endblock %}
+{% block content %}
+  <!-- Hero Section Start -->
+  <section class="hero" id="home" style="background-image: url('{% static 'core/img/fodd-bg.jpeg' %}');">
+    <main class="content">
+      <h1>Belanja di</h1>
+      <h1><span>Kantin ITB</span></h1>
+      <h1>#LebihMudah</h1>
+      <p>Hemat Waktu, Lebih Praktis, dan Siap Disantap!</p>
+      <a href="{% url 'store:store_home' %}" class="cta">Beli Sekarang</a>
+    </main>
+  </section>
+  <!-- Hero Section End -->
+
+  <!--Daftar Makanan-->
+  <div class="container">
+    <div class="row">
+      <div class="album py-5">
+        <div class="pb-3">
+          <h1 class="h3">Menu Favorit</h1>
+        </div>
+        {% if not products %}
+        <div class="col-12">Belum ada makanan tersedia!</div>
+          {% else %}
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
+          {% for product in products %}
+          <div class="col">
+            <div class="card h-100 border-0">
+              <img class="img-fluid card-img-top" alt="Responsive image" src="{{ product.image.url }}">
+              <div class="card-body px-0">
+                <p class="card-text">
+                  <a class="h4 text-dark text-decoration-none"
+                    href="{{ product.get_absolute_url }}">{{ product.title}}</a>
+                </p>
+                <div class="fw-bold text-dark text-muted">Rp{{product.price}}0</div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <!--Akhir Daftar Makanan-->
+
+  <!-- Contact Section Start-->
+  <section id="contact" class="contact">
+    <h2><span>Kontak</span> Kami</h2>
+    <p>Silakan Kontak Kami Melalui Format Berikut</p>
+
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.992663178838!2d107.61065909999996!3d-6.891479999999991!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e65767c9b183%3A0x2478e3dcdce37961!2sInstitut%20Teknologi%20Bandung!5e0!3m2!1sid!2sid!4v1681175443847!5m2!1sid!2sid"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            class="map"
+          ></iframe>
+        </div>
+
+        <div class="col">
+          <form action="">
+            <div class="input-grup">
+              <i data data-feather="user"></i>
+              <input type="text" placeholder="Nama" />
+            </div>
+            <div class="input-grup">
+              <i data data-feather="mail"></i>
+              <input type="text" placeholder="E-Mail" />
+            </div>
+            <div class="input-grup">
+              <i data data-feather="phone"></i>
+              <input type="text" placeholder="No. Handphone" />
+            </div>
+            <button type="submit" class="btn">Kirim Pesan</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Contacct Section End -->
+{% endblock %}
