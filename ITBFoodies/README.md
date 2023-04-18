@@ -1,4 +1,7 @@
 ## Instructions
+
+Buka VScode di directory ITBFoodies
+
 Commands:
 
     py -m venv venv
